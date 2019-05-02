@@ -21,6 +21,8 @@ MongoClient.connect('mongodb+srv://herman:Whatever_528@cluster0-ay2hl.gcp.mongod
     });
     db.createCollection("movie", function (err, res) {
     });
+    db.createCollection("comment", function (err, res) {
+    });
 
     db.collection('member').save({ "email": "admin@gmail.com", "pw": "123", "type": "A" }, (err, rs) => {
         if (err) {
@@ -156,7 +158,7 @@ app.delete('/unFav/:id/:userid', (req, res) => {
     });
 })
 app.delete('/delCom/:id', (req, res) => {
-    const obj ={ _id: ObjectID(req.params.id) }
+    const obj = { _id: ObjectID(req.params.id) }
     db.collection("comment").remove(obj, function (err, obj) {
         if (err) res.send(false);
         console.log("1 document deleted");
